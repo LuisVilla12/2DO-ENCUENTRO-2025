@@ -1,0 +1,54 @@
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+CREATE TABLE `guardar_pdfs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `autores` longtext NOT NULL,
+  `institucion` varchar(255) NOT NULL,
+  `ca_nombre` varchar(255) NOT NULL,
+  `ca_clave` varchar(255) NOT NULL,
+  `modalidad` varchar(255) NOT NULL,
+  `pahtpdf` varchar(255) NOT NULL,
+  `namepdf` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `registro_academias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `autores` longtext NOT NULL,
+  `institucion` varchar(255) NOT NULL,
+  `ca_nombre` varchar(255) NOT NULL,
+  `ca_clave` varchar(255) NOT NULL,
+  `modalidad` varchar(255) NOT NULL,
+  `grado_consolidacion` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `registro_cursos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) NOT NULL,
+  `institucion` varchar(255) NOT NULL,
+  `correo` varchar(255) NOT NULL,
+  `ca_clave` varchar(255) DEFAULT NULL,
+  `ca_nombre` varchar(255) DEFAULT NULL,
+  `curso` varchar(255) NOT NULL,
+  `grado_consolidacion` varchar(255) DEFAULT NULL,
+  `pertenece_cuerpo` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
