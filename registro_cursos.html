@@ -88,6 +88,10 @@
         .mt-4{
             margin-top: 1rem;
         }
+        .mt-inline{
+            display: inline-block;
+            margin-top: 1rem;
+        }
         .block{
             display: block;
         }
@@ -193,7 +197,10 @@
     const checkboxes = document.querySelectorAll("input[name='cursos[]']");
     const linkContainer = document.createElement("div");
     linkContainer.id = "linkContainer";
-    document.body.appendChild(linkContainer);
+    
+    // Insertar el contenedor de enlaces después de los checkboxes pero antes del botón
+    const checkboxContainer = document.querySelector("label[for='']").parentNode;
+    checkboxContainer.appendChild(linkContainer);
 
     function updateLinks() {
         linkContainer.innerHTML = "";
@@ -201,8 +208,9 @@
         if (document.querySelector("input[value='Huella']").checked) {
             const link1 = document.createElement("a");
             link1.href = "https://teams.microsoft.com/l/team/19%3A17iLljeoaCEOb8guxeXGCmKY5UUGoVw2RNIEkRFJw881%40thread.tacv2/conversations?groupId=c29acf85-2ba4-4bd3-bc50-c22ee26c4c6a&tenantId=7aab5429-e8cd-4d83-b304-328b36175600";
-            link1.textContent = "Monitoreo y calidad del agua";
+            link1.textContent = "Unirse al equipo de teams: Monitoreo y calidad del agua";
             link1.target = "_blank";
+            link1.classList.add('mt-inline');
             linkContainer.appendChild(link1);
             linkContainer.appendChild(document.createElement("br"));
         }
@@ -210,20 +218,20 @@
         if (document.querySelector("input[value='IA']").checked) {
             const link2 = document.createElement("a");
             link2.href = "https://teams.microsoft.com/l/team/19%3ArCrH_F6xV0rMcyIE46DtlPYgICwuOMfQjo1-kSuA2ig1%40thread.tacv2/conversations?groupId=ec54da4e-4574-477c-ba6f-976ec7b6cbdf&tenantId=7aab5429-e8cd-4d83-b304-328b36175600";
-            link2.textContent = "Uso ético de la IA en la educación";
+            link2.textContent = "Unirse al equipo de teams: Uso ético de la IA en la educación";
             link2.target = "_blank";
+            link2.classList.add('mt-inline');
             linkContainer.appendChild(link2);
             linkContainer.appendChild(document.createElement("br"));
         }
     }
+
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener("change", updateLinks);
     });
 
     updateLinks();
 
-
 });
 </script>
 </html>
-
