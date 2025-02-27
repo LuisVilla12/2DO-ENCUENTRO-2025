@@ -53,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validar si los cursos están disponibles
     if (in_array("Huella", $cursos) && $contadorHuella >= $limite_huella) {
         header("Location: excedio-limite-registros.html");
-        exit(); 
         // die("Lo sentimos, el curso 'Monitoreo y calidad del agua' ha alcanzado su límite de inscripciones.");
     }
     if (in_array("IA", $cursos) && $contadorIA >= $limite_ia) {
