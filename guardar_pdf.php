@@ -4,7 +4,7 @@ $servername = "localhost";  // O la IP del servidor si no es localhost
 $username = "luisvilla";     // Nombre de usuario de la base de datos
 $password = "lkqaz923";   // Contraseña de la base de datos
 $dbname = "encuentroca";   // Nombre de la base de datos
-$port = 3307;  // Puerto personalizado (en tu caso, es el 330)
+$port = 3306;  // Puerto personalizado (en tu caso, es el 330)
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
