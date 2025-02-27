@@ -1,7 +1,7 @@
 <?php
 // Configuración de la conexión a la base de datos
 $servername = "localhost";  // O la IP del servidor si no es localhost
-$username = "root";     // Nombre de usuario de la base de datos
+$username = "luisvilla";     // Nombre de usuario de la base de datos
 $password = "lkqaz923";   // Contraseña de la base de datos
 $dbname = "encuentroca";   // Nombre de la base de datos
 $port = 3307;  // Puerto personalizado (en tu caso, es el 330)
