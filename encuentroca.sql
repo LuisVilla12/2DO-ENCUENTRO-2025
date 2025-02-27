@@ -7,18 +7,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE TABLE `guardar_pdfs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `autores` longtext NOT NULL,
-  `institucion` varchar(255) NOT NULL,
-  `ca_nombre` varchar(255) NOT NULL,
-  `ca_clave` varchar(255) NOT NULL,
-  `modalidad` varchar(255) NOT NULL,
-  `pahtpdf` varchar(255) NOT NULL,
-  `namepdf` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 CREATE TABLE `registro_academias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `autores` longtext NOT NULL,
@@ -42,6 +30,16 @@ CREATE TABLE `registro_cursos` (
   `pertenece_cuerpo` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `registro_pdf` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `autores` longtext NOT NULL,
+  `institucion` varchar(255) NOT NULL,
+  `pahtpdf` varchar(255) NOT NULL,
+  `namepdf` varchar(255) NOT NULL,
+  `modalidad` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 

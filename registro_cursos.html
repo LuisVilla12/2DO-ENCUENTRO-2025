@@ -110,7 +110,7 @@
    </head>
 <body>
     <div class="container">
-        <img src="Encabezado.jpg" class="" alt="encabezado">
+        <img src="Encabezado.jpeg" class="" alt="encabezado">
         <h1>Formulario de Registro - 2o. Encuentro de CA's</h1>
         <p>Registro a los cursos en línea </p>
         <form action="guardar_cursos.php" id="myForm" method="POST" enctype="multipart/form-data">
@@ -136,22 +136,24 @@
                 </div>
             </div>
             <!-- SI pertenece -->
-            <div>
-                <label>Nombre del cuerpo académico*</label>
-                <input type="text" name="ca_nombre" id="ca_nombre" required placeholder="Nombre del cuerpo académico">
-            </div>
-            <div>
-                <label>Clave del cuerpo académico *</label>
-                <input type="text" name="ca_clave" id="ca_clave" required placeholder="Clave del cuerpo académico">
-            </div>
-            <div>
-                <label>Grado de consolidación:*</label>
-                <div class="radio-group mt-2">
-                    <label><input type="radio" name="grado_consolidacion" id="consolidado"  value="Consolidado" checked >Consolidado</label>
-                    <label><input type="radio" name="grado_consolidacion" id="En_consolidación" value="En consolidación">En consolidación</label>
-                    <label><input type="radio" name="grado_consolidacion" id="En_formación" value="En formación">En formación</label>
+             <div id="campos_cuerpo_academico">
+                <div>
+                    <label>Nombre del cuerpo académico*</label>
+                    <input type="text" name="ca_nombre" id="ca_nombre" required placeholder="Nombre del cuerpo académico">
                 </div>
-            </div>
+                <div>
+                    <label>Clave del cuerpo académico *</label>
+                    <input type="text" name="ca_clave" id="ca_clave" required placeholder="Clave del cuerpo académico">
+                </div>
+                <div>
+                    <label>Grado de consolidación:*</label>
+                    <div class="radio-group mt-2">
+                        <label><input type="radio" name="grado_consolidacion" id="consolidado"  value="Consolidado" checked >Consolidado</label>
+                        <label><input type="radio" name="grado_consolidacion" id="En_consolidación" value="En consolidación">En consolidación</label>
+                        <label><input type="radio" name="grado_consolidacion" id="En_formación" value="En formación">En formación</label>
+                    </div>
+                </div>
+             </div>
             <div>
                 <label class="mt-4">Curso al que desea inscribirse (Cupo Limitado)*</label>
                 <label class="block mt-2">&emsp;1. Curso Taller: Huella Hídrica:  28 Feb, 7,14 y 21 de Marzo 17:00 a 20:00 horas
@@ -159,12 +161,69 @@
                 <label class="block mt-2">&emsp;2. Curso-Taller: Uso ético de la IA en la educación 20, 24, 25 y 26 de Marzo 17:00 a 20:00 horas</label>
                 <label class="block mt-2">&emsp;Indispensable tener conocimientos básicos de computación, tener cuenta de google y la instalación en su PC de software Zotero: <a href="https://www.zotero.org/download/" target="_blank">Instalación de Zotero</a></label>
                 <label for="" class="block mt-4">Elige el curso: </label>
-                <label class="semi-bold mt-2 block"><input type="checkbox" name="cursos[]" value="Huella">Huella Hídrica</label>
+                <label class="semi-bold mt-2 block"><input type="checkbox" name="cursos[]" value="Huella">Monitoreo y calidad del agua</label>
                 <label class="semi-bold mt-2 block"><input type="checkbox" name="cursos[]" value="IA">Uso ético de la IA en la educación</label>
             </div>
+            <!-- Contenedor donde se mostrarán los enlaces -->
+            <section id="linkContainer"></section>
             <button type="submit">Enviar</button>
         </form>
     </div>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const perteneceSi = document.getElementById("si");
+    const perteneceNo = document.getElementById("no");
+    const camposCuerpoAcademico = document.getElementById("campos_cuerpo_academico");
+
+    function toggleCampos() {
+        if (perteneceSi.checked) {
+            camposCuerpoAcademico.style.display = "block";
+        } else {
+            camposCuerpoAcademico.style.display = "none";
+        }
+    }
+
+    perteneceSi.addEventListener("change", toggleCampos);
+    perteneceNo.addEventListener("change", toggleCampos);
+
+    // Ejecutar una vez al inicio para ajustar el estado inicial
+    toggleCampos();
+
+    const checkboxes = document.querySelectorAll("input[name='cursos[]']");
+    const linkContainer = document.createElement("div");
+    linkContainer.id = "linkContainer";
+    document.body.appendChild(linkContainer);
+
+    function updateLinks() {
+        linkContainer.innerHTML = "";
+        
+        if (document.querySelector("input[value='Huella']").checked) {
+            const link1 = document.createElement("a");
+            link1.href = "https://teams.microsoft.com/l/team/19%3A17iLljeoaCEOb8guxeXGCmKY5UUGoVw2RNIEkRFJw881%40thread.tacv2/conversations?groupId=c29acf85-2ba4-4bd3-bc50-c22ee26c4c6a&tenantId=7aab5429-e8cd-4d83-b304-328b36175600";
+            link1.textContent = "Monitoreo y calidad del agua";
+            link1.target = "_blank";
+            linkContainer.appendChild(link1);
+            linkContainer.appendChild(document.createElement("br"));
+        }
+        
+        if (document.querySelector("input[value='IA']").checked) {
+            const link2 = document.createElement("a");
+            link2.href = "https://teams.microsoft.com/l/team/19%3ArCrH_F6xV0rMcyIE46DtlPYgICwuOMfQjo1-kSuA2ig1%40thread.tacv2/conversations?groupId=ec54da4e-4574-477c-ba6f-976ec7b6cbdf&tenantId=7aab5429-e8cd-4d83-b304-328b36175600";
+            link2.textContent = "Uso ético de la IA en la educación";
+            link2.target = "_blank";
+            linkContainer.appendChild(link2);
+            linkContainer.appendChild(document.createElement("br"));
+        }
+    }
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", updateLinks);
+    });
+
+    updateLinks();
+
+
+});
 </script>
 </html>
+

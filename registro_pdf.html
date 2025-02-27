@@ -95,24 +95,17 @@
             object-fit: cover;
             height: 80px;
         }
-
+        .mt-2{
+            margin-top: .5rem;
+        }
     </style>
     </head>
 <body>
     <div class="container">
-        <img src="Encabezado.jpg" class="" alt="encabezado">
+        <img src="Encabezado.jpeg" class="" alt="encabezado">
         <h1>Formulario de Registro - 2o. Encuentro de CA's</h1>
-        <p>Deberá elegir una la (s) opciones en la que desea participar, únicamente asistentes al evento del 2o. Encuentro de CA's a celebrarse los días 27 y 28 de marzo en el Instituto Tecnológico de Boca del Río        </p>
 
-        <form action="guardar_pdf.php" id="myForm" method="POST" enctype="multipart/form-data">
-            <div>
-                <label>Modalidad de participación *</label>
-                <div class="radio-group" >
-                    <label><input type="radio" name="modalidad" id="cartel" checked value="Cartel">Cartel</label>
-                    <label><input type="radio" name="modalidad" id="prototipo" value="Prototipo">Prototipo</label>
-                    <label><input type="radio" name="modalidad" id="capitulo" value="⁠Capítulo">⁠Capítulo de libro</label>
-                </div>
-            </div>
+        <form action="guardar_pdf.php" id="myForm" method="POST" enctype="multipart/form-data" >
 
             <div>
                 <label>Indica los nombres de los autores *</label>
@@ -125,18 +118,20 @@
             </div>
 
             <div>
-                <label>Nombre del cuerpo académico*</label>
-                <input type="text" name="ca_nombre" id="ca_nombre" required placeholder="Nombre del cuerpo académico">
-            </div>
-            <div>
-                <label>Clave del cuerpo académico *</label>
-                <input type="text" name="ca_clave" id="ca_clave" required placeholder="Clave del cuerpo académico">
-            </div>
-            <div>
-                <label>Sube tu cartel o ficha técnica en PDF *</label>
-                <input type="file" id="fileInput" accept="application/pdf" required>
+                <label>Modalidad de participación *</label>
+                <div class="radio-group" >
+                    <label><input type="radio" name="modalidad" id="cartel" checked value="Cartel">Cartel</label>
+                    <label><input type="radio" name="modalidad" id="prototipo" value="Prototipo">Prototipo</label>
+                    <label><input type="radio" name="modalidad" id="capitulo" value="⁠Capítulo">⁠Capítulo de libro</label>
+                </div>
             </div>
 
+            
+            <div>
+                <label>Sube tu cartel o ficha técnica o capitulo  *</label>
+                <input class="mt-2" type="file" name="file" id="file" accept=".pdf, .docx, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
+
+            </div>
             <button type="submit">Enviar</button>
         </form>
     </div>
