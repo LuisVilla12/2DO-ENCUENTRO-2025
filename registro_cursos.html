@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2o. Encuentro de CA's</title>
+    <style>
+        body {
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 40px 30px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #555555;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label, option {
+            line-height: 1.5;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px;
+            background-color: rgb(5,26,57);
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: #333333;
+        }
+        .mt-2{
+            margin-top: .5rem;
+        }
+        .mt-4{
+            margin-top: 1rem;
+        }
+        .block{
+            display: block;
+        }
+        .note {
+            font-size: 0.8rem;
+            color: #555555;
+            text-align: center;
+        }
+        img{
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            object-fit: cover;
+            height: 30px;
+        }
+        .semi-bold{
+            font-weight: 400;
+        }
+    </style>
+   </head>
+<body>
+    <div class="container">
+        <img src="Encabezado.png" class="" alt="encabezado">
+        <h1>Formulario de Registro - 2o. Encuentro de CA's</h1>
+        <p>Registro a los cursos en línea </p>
+        <form action="guardar_cursos.php" id="myForm" method="POST" enctype="multipart/form-data">
+            <div>
+                <label>Nombre completo (Comenzando por apellidos, tal y como lo escriba saldrán sus constancias de participación) *</label>
+                <input type="text" name="nombre" id="nombre" required placeholder="Nombre completo">
+            </div>
+
+            <div>
+                <label>Institución de procedencia *</label>
+                <input type="text" name="institucion" id="institucion" required placeholder="Nombre de la institución">
+            </div>
+
+            <div>
+                <label>Correo electrónico institucional *</label>
+                <input type="email" name="correo" id="correo" required placeholder="Correo electrónico institucional">
+            </div>
+            <div>
+                <label>Pertenece a un Cuerpo Académico*</label>
+                <div class="radio-group" >
+                    <label><input type="radio" name="pertenece_cuerpo" id="si" checked value="1">Si</label>
+                    <label><input type="radio" name="pertenece_cuerpo" id="no" value="0">No</label>
+                </div>
+            </div>
+            <!-- SI pertenece -->
+            <div>
+                <label>Nombre del cuerpo académico*</label>
+                <input type="text" name="ca_nombre" id="ca_nombre" required placeholder="Nombre del cuerpo académico">
+            </div>
+            <div>
+                <label>Clave del cuerpo académico *</label>
+                <input type="text" name="ca_clave" id="ca_clave" required placeholder="Clave del cuerpo académico">
+            </div>
+            <div>
+                <label>Grado de consolidación:*</label>
+                <div class="radio-group mt-2">
+                    <label><input type="radio" name="grado_consolidacion" id="consolidado"  value="Consolidado" checked >Consolidado</label>
+                    <label><input type="radio" name="grado_consolidacion" id="En_consolidación" value="En consolidación">En consolidación</label>
+                    <label><input type="radio" name="grado_consolidacion" id="En_formación" value="En formación">En formación</label>
+                </div>
+            </div>
+            <div>
+                <label class="mt-4">Curso al que desea inscribirse (Cupo Limitado)*</label>
+                <label class="block mt-2">&emsp;1. Curso Taller: Huella Hídrica:  28 Feb, 7,14 y 21 de Marzo 17:00 a 20:00 horas
+                </label>
+                <label class="block mt-2">&emsp;2. Curso-Taller: Uso ético de la IA en la educación 20, 24, 25 y 26 de Marzo 17:00 a 20:00 horas</label>
+                <label class="block mt-2">&emsp;Indispensable tener conocimientos básicos de computación, tener cuenta de google y la instalación en su PC de software Zotero: <a href="https://www.zotero.org/download/" target="_blank">Instalación de Zotero</a></label>
+                <label for="" class="block mt-4">Elige el curso: </label>
+                <label class="semi-bold mt-2 block"><input type="checkbox" name="cursos[]" value="Huella">Huella Hídrica</label>
+                <label class="semi-bold mt-2 block"><input type="checkbox" name="cursos[]" value="IA">Uso ético de la IA en la educación</label>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</script>
+</html>

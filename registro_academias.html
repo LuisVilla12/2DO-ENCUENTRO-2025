@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2o. Encuentro de CA's</title>
+    <style>
+        body {
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 40px 30px;
+        }
+        h1 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #555555;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label, option {
+            line-height: 1.5;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #333333;
+        }
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        button {
+            padding: 10px;
+            background-color: rgb(5,26,57);
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: #333333;
+        }
+
+        .note {
+            font-size: 0.8rem;
+            color: #555555;
+            text-align: center;
+        }
+        img{
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            object-fit: cover;
+            height: 30px;
+        }
+        .inline-block{
+            display: inline-block;
+            width: 100%;
+        }
+        .mt-4{
+            margin-top: .5rem;
+        }
+
+    </style>
+    </head>
+<body>
+    <div class="container">
+        <img src="Encabezado.png" class="" alt="encabezado">
+        <h1>Formulario de Registro - 2o. Encuentro de CA's</h1>
+        <p>Únicamente para asistentes al evento del 2o. Encuentro de CA's a celebrarse los días 27 y 28 de marzo en el Instituto Tecnológico de Boca del Río</p>
+
+        <form action="guardar_registro.php" id="myForm" method="POST" enctype="multipart/form-data">
+            <div>
+                <label>Modalidad de participación *</label>
+                <div class="radio-group" >
+                    <label><input type="radio" name="modalidad" id="cartel" checked value="Cartel">Cartel</label>
+                    <label><input type="radio" name="modalidad" id="prototipo" value="Prototipo">Prototipo</label>
+                    <label><input type="radio" name="modalidad" id="capitulo" value="⁠Capítulo">⁠Capítulo de libro</label>
+                </div>
+            </div>
+
+            <div>
+                <label>Indica los nombres de los autores *</label>
+                <input type="text" name="autores" id="autores" required placeholder="Villa-Juárez, Jazmin; Alemán-Gutiérrez, María Rebeca...">
+            </div>
+
+            <div>
+                <label>Institución de procedencia *</label>
+                <input type="text" name="institucion" id="institucion" required placeholder="Nombre de la institución">
+            </div>
+
+            <div>
+                <label>Nombre del cuerpo académico*</label>
+                <input type="text" name="ca_nombre" id="ca_nombre" required placeholder="Nombre del cuerpo académico">
+            </div>
+            <div>
+                <label>Clave del cuerpo académico *</label>
+                <input type="text" name="ca_clave" id="ca_clave" required placeholder="Clave del cuerpo académico">
+            </div>
+            <div>
+                <label>Grado de consolidación:*</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="grado_consolidacion" id="consolidado"  value="Consolidado" checked >Consolidado</label>
+                    <label><input type="radio" name="grado_consolidacion" id="En_consolidación" value="En consolidación">En consolidación</label>
+                    <label><input type="radio" name="grado_consolidacion" id="En_formación" value="En formación">En formación</label>
+                </div>
+            </div>
+            <div>
+                <label>Descarga aquí los formatos correspondientes * </label>
+                    <a href="Cartel_2025.pdf" class="inline-block mt-4" download="Plantilla_Encuentro_CA.pdf">1.-Formato para el cartel</a>
+                    <a class="inline-block mt-4" href="https://docs.google.com/document/d/1q0KjUyKFFo9DoOZq07hUk1ZB_fEc_-Cj/edit?usp=share_link&ouid=104441604203683644200&rtpof=true&sd=true " download="Plantilla_Encuentro_CA.pdf">2.- Formato para la ficha técnica</a>
+                    <p></p>
+                    
+            </div>
+
+            <button type="submit">Enviar</button>
+            <div>
+                <label>Descarga aquí la convocatoria completa para más información * 
+                    <a href="convocatoria_25.pdf" download="Plantilla_Encuentro_CA.pdf">Convocatoria 2025</a></label>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>
