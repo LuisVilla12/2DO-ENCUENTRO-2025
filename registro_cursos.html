@@ -143,15 +143,15 @@
             <!-- SI pertenece -->
              <div id="campos_cuerpo_academico">
                 <div>
-                    <label>Nombre del cuerpo académico*</label>
-                    <input type="text" name="ca_nombre" id="ca_nombre"  placeholder="Nombre del cuerpo académico">
+                    <label class="mt-2">Nombre del cuerpo académico*</label>
+                    <input class="mt-2" type="text" name="ca_nombre" id="ca_nombre"  placeholder="Nombre del cuerpo académico">
                 </div>
-                <div>
-                    <label>Clave del cuerpo académico *</label>
-                    <input type="text" name="ca_clave" id="ca_clave"  placeholder="Clave del cuerpo académico">
+                <div class="mt-2">
+                    <label class="mt-2">Clave del cuerpo académico *</label>
+                    <input class="mt-2" type="text" name="ca_clave" id="ca_clave"  placeholder="Clave del cuerpo académico">
                 </div>
-                <div>
-                    <label>Grado de consolidación:*</label>
+                <div class="mt-2">
+                    <label class="">Grado de consolidación:*</label>
                     <div class="radio-group mt-2">
                         <label><input type="radio" name="grado_consolidacion" id="consolidado"  value="Consolidado" checked >Consolidado</label>
                         <label><input type="radio" name="grado_consolidacion" id="En_consolidación" value="En consolidación">En consolidación</label>
@@ -159,9 +159,16 @@
                     </div>
                 </div>
              </div>
+             <div>
+                <label class="mt-2">Confirma la asistencia al evento*</label>
+                <div class="radio-group" >
+                    <label><input type="radio" name="asistencia" id="si" checked value="1">Si</label>
+                    <label><input type="radio" name="asistencia" id="no" value="0">No</label>
+                </div>
+            </div>
             <div>
                 <label class="mt-4">Curso al que desea inscribirse (Cupo Limitado)*</label>
-                <label class="block mt-2">&emsp;1. Curso Taller: Huella Hídrica:  28 Feb, 7,14 y 21 de Marzo 17:00 a 20:00 horas
+                <label class="block mt-2">&emsp;1. Curso Taller: Monitoreo y calidad del agua:  28 Feb, 7,14 y 21 de Marzo 17:00 a 20:00 horas
                 </label>
                 <label class="block mt-2">&emsp;2. Curso-Taller: Uso ético de la IA en la educación 20, 24, 25 y 26 de Marzo 17:00 a 20:00 horas</label>
                 <label class="block mt-2">&emsp;Indispensable tener conocimientos básicos de computación, tener cuenta de google y la instalación en su PC de software Zotero: <a href="https://www.zotero.org/download/" target="_blank">Instalación de Zotero</a></label>

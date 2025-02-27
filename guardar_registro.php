@@ -23,9 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ca_clave = $_POST['ca_clave'];
     $modalidad = $_POST['modalidad'];
     $grado_consolidacion = $_POST['grado_consolidacion'];
+    $asistencia = $_POST['asistencia'];
 
     // Insertar los datos en la base de datos
-    $sql = "INSERT INTO registro_academias (autores, institucion, ca_nombre,ca_clave,modalidad,grado_consolidacion) VALUES ('$autores', '$institucion', '$ca_nombre','$ca_clave','$modalidad','$grado_consolidacion')";
+    $sql = "INSERT INTO registro_academias (autores, institucion, ca_nombre,ca_clave,modalidad,grado_consolidacion,asistencia) VALUES ('$autores', '$institucion', '$ca_nombre','$ca_clave','$modalidad','$grado_consolidacion','$asistencia')";
 
     if ($conn->query($sql) === TRUE) {
         header("Location: gracias_por_registrarte.html");

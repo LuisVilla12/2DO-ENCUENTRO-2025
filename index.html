@@ -13,7 +13,7 @@
     }
 
     .header {
-      background-color: #800020; /* Burgundy color */
+      background-color: #800020;
       color: white;
       padding: 1rem 1.5rem;
     }
@@ -26,48 +26,75 @@
     }
 
     .header__enlaces {
-    display: inline-block;
+      display: inline-block;
       color: white;
       text-decoration: none;
       font-size: 1rem;
       margin-right: 2rem;
       padding: 20px 30px;
-
     }
 
     .a:hover {
       text-decoration: underline;
     }
-    
+
     img {
       width: 100%;
       object-fit: cover;
     }
-    .container{
+    .container {
         width: 80%;
         margin: 0 auto;
     }
-    .img_container{
-        margin: 0 auto;
-    }
-    .bg{
+    .bg {
       background-color: #c58641;
       padding: 15px 30px;
       border-radius: .3rem;
     }
-    .bg2{
-      background-color: #b4a286;
-      border-radius: .3rem;
-    }
-    .bg:hover{
+    .bg:hover {
       background-color: #756e59;
     }
-    .mr-2{
+    .mr-2 {
       margin-right: .4rem;
       margin-bottom: -14px;
     }
-    .mt-2{
+    .mt-2 {
       margin-top: 1.5rem;
+    }
+    
+    /* Botón flotante */
+    .floating-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #800020;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      font-size: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease-in-out;
+    }
+    .floating-button:hover {
+      background-color: #5a0016;
+      transform: scale(1.1);
+    }
+    
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+    .floating-button {
+      animation: bounce 1.5s infinite;
+    }
+    .text-center{
+      text-align: center;
     }
   </style>
 </head>
@@ -75,25 +102,30 @@
   <header class="header">
     <div class="container">
         <div class="flex">
-            <div></div>
+            <div>
+              <a href="https://www.facebook.com/profile.php?id=61573119758181&sk=about"> <img src="facebook.png" style="width: 30px;height: 30px; object-fit: contain; margin-right: 1rem;" alt="facebook"></a>
+              <a href="mailto:encuentro_ca@itsx.edu.mx"> <img src="gmail.png" style="width: 30px;height: 32px; object-fit: contain;" alt="gmail"></a>
+            </div>
             <nav>
               <a href="registro_academias.html" class="header__enlaces bg">Registrate</a>
-              <a href="registro_formatos.html" class="header__enlaces bg"> <img src="icon_1.png" class="mr-2" style="width: 30px;height: 30px;  object-fit: contain;  " alt="log">Formatos</a>
+              <a href="registro_formatos.html" class="header__enlaces bg"> <img src="icon_1.png" class="mr-2" style="width: 30px;height: 30px; object-fit: contain;" alt="log">Formatos</a>
               <a href="registro_cursos.html" class="header__enlaces bg">Cursos</a>
-              <!-- <a href="registro_pdf.html" class="header__enlaces a">PDF</a> -->
             </nav>
         </div>
     </div>
   </header>
 
   <main>
-    <div class="">
-        <img src="cartel_principal.jpeg" class="" alt="cartel">
+    <div>
+        <img src="cartel_principal.jpeg" alt="cartel">
     </div>
     <div class="container">
-<img src="Imagen1.png" alt="image1" class="mt-2">
-<img src="Imagen2.png" alt="image2" class="mt-2">
+      <h2 class="text-center mt-4 " style="font-weight: 700; font-size: 3rem;">PROGRAMA DEL EVENTO</h2>
+      <img src="Imagen1.png" alt="image1" class="mt-2">
+      <img src="Imagen2.png" alt="image2" class="mt-2">
     </div>
   </main>
+
+  <a href="convocatoria.pdf" class="floating-button" download>Descarga la convocatoria</a>
 </body>
 </html>
