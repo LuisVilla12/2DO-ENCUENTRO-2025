@@ -1,10 +1,10 @@
 <?php
 // Configuración de la conexión a la base de datos
 $servername = "localhost";  // O la IP del servidor si no es localhost
-$username = "luisvilla";     // Nombre de usuario de la base de datos
+$username = "root";     // Nombre de usuario de la base de datos
 $password = "lkqaz923";   // Contraseña de la base de datos
 $dbname = "encuentroca";   // Nombre de la base de datos
-$port = 3306;  // Puerto personalizado (en tu caso, es el 330)
+$port = 3307;  // Puerto personalizado (en tu caso, es el 330)
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
@@ -23,10 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ca_clave = $_POST['ca_clave'];
     $modalidad = $_POST['modalidad'];
     $grado_consolidacion = $_POST['grado_consolidacion'];
-    $asistencia = $_POST['asistencia'];
+    // $asistencia = $_POST['asistencia'];
 
     // Insertar los datos en la base de datos
-    $sql = "INSERT INTO registro_academias (autores, institucion, ca_nombre,ca_clave,modalidad,grado_consolidacion,asistencia) VALUES ('$autores', '$institucion', '$ca_nombre','$ca_clave','$modalidad','$grado_consolidacion','$asistencia')";
+    $sql = "INSERT INTO registro_academias (autores, institucion, ca_nombre,ca_clave,modalidad,grado_consolidacion) VALUES ('$autores', '$institucion', '$ca_nombre','$ca_clave','$modalidad','$grado_consolidacion')";
 
     if ($conn->query($sql) === TRUE) {
         header("Location: gracias_por_registrarte.html");

@@ -1,15 +1,15 @@
 <?php
 // Configuración de la conexión a la base de datos
 $servername = "localhost";  // O la IP del servidor si no es localhost
-$username = "root";     // Nombre de usuario de la base de datos
+$username = "luisvilla";     // Nombre de usuario de la base de datos
 $password = "lkqaz923";   // Contraseña de la base de datos
 $dbname = "encuentroca";   // Nombre de la base de datos
-$port = 3307;  // Puerto personalizado (en tu caso, es el 330)
+$port = 3306;  // Puerto personalizado (en tu caso, es el 330)
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
 // Consulta para obtener los datos
-$sql = "SELECT * registros_academias ORDER BY id DESC";
+$sql = "SELECT * FROM registro_academias";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Archivos</title>
+    <title>Lista de personal</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
@@ -41,7 +41,6 @@ $result = $conn->query($sql);
                 <th>Clave CA</th>
                 <th>Modalidad</th>
                 <th>Consolidación</th>
-                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -50,9 +49,12 @@ $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
                         <td>" . $row["id"] . "</td>
-                        <td>" . $row["nombre"] . "</td>
-                        <td>" . $row["fecha"] . "</td>
-                        <td><a href='" . $row["ruta"] . "' target='_blank'>Ver PDF</a></td>
+                        <td>" . $row["autores"] . "</td>
+                        <td>" . $row["institucion"] . "</td>
+                        <td>" . $row["ca_nombre"] . "</td>
+                        <td>" . $row["ca_clave"] . "</td>
+                        <td>" . $row["modalidad"] . "</td>
+                        <td>" . $row["grado_consolidacion"] . "</td>
                     </tr>";
                 }
             } else {
@@ -64,8 +66,3 @@ $result = $conn->query($sql);
 
 </body>
 </html>
-
-<?
-// Cerrar la conexión
-$conn->close();
-?>
