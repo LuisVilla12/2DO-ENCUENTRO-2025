@@ -49,6 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cursos = isset($_POST['cursos']) ? $_POST['cursos'] : [];
     $pertenece_cuerpo = $_POST['pertenece_cuerpo'];
     $grado_consolidacion = $_POST['grado_consolidacion'];
+    $asistencia = $_POST['asistencia'];
 
     // Validar si los cursos están disponibles
     if (in_array("Huella", $cursos) && $contadorHuella >= $limite_huella) {
@@ -64,8 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cursos_string = implode(",", $cursos);
 
     // Insertar los datos en la base de datos usando consulta preparada
-    $sql = $conn->prepare("INSERT INTO registro_cursos (nombre, institucion, correo, ca_nombre, ca_clave, curso, grado_consolidacion, pertenece_cuerpo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $sql->bind_param("ssssssss", $nombre, $institucion, $correo, $ca_nombre, $ca_clave, $cursos_string, $grado_consolidacion, $pertenece_cuerpo);
+    $sql = $conn->prepare("INSERT INTO registro_cursos (nombre, institucion, correo, ca_nombre, ca_clave, curso, grado_consolidacion, pertenece_cuerpo,asistencia) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)");
+    $sql->bind_param("ssssssss", $nombre, $institucion, $correo, $ca_nombre, $ca_clave, $cursos_string, $grado_consolidacion, $pertenece_cuerpo,$asistencia);
 
     if ($sql->execute()) {
         header("Location: gracias_por_registrarte.html");

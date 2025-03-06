@@ -42,7 +42,7 @@
     </style>
 </head>
 <body>
-    <h1>Archivos PDF Almacenados</h1>
+    <h1>Lista de academias registradas</h1>
     <div class="pdf-list">
         <?php
         // Configuración de la conexión a la base de datos

@@ -9,7 +9,7 @@ $port = 3306;  // Puerto personalizado (en tu caso, es el 330)
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
 // Consulta para obtener los datos
-$sql = "SELECT * FROM registro_academias";
+$sql = "SELECT * FROM registro_pdf";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -29,17 +29,19 @@ $result = $conn->query($sql);
 </head>
 <body>
 
-    <h2>Lista de Archivos PDF</h2>
+    <h2>Lista de personal registrado a cursos</h2>
 
     <table>
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Autores</th>
+                <th>Nombre</th>
                 <th>Institucion</th>
+                <th>Correo</th>
+                <th>Pertenece a CA</th>
                 <th>Nombre CA</th>
                 <th>Clave CA</th>
-                <th>Modalidad</th>
+                <th>curso</th>
                 <th>Consolidación</th>
             </tr>
         </thead>
@@ -49,11 +51,13 @@ $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
                         <td>" . $row["id"] . "</td>
-                        <td>" . $row["autores"] . "</td>
+                        <td>" . $row["nombre"] . "</td>
                         <td>" . $row["institucion"] . "</td>
+                        <td>" . $row["correo"] . "</td>
+                        <td>" . $row["pertenece_cuerpo"] . "</td>
                         <td>" . $row["ca_nombre"] . "</td>
                         <td>" . $row["ca_clave"] . "</td>
-                        <td>" . $row["modalidad"] . "</td>
+                        <td>" . $row["curso"] . "</td>
                         <td>" . $row["grado_consolidacion"] . "</td>
                     </tr>";
                 }
