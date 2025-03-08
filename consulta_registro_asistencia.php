@@ -53,6 +53,7 @@ $result = $conn->query($sql);
             <tr>
                 <th>N°</th>
                 <th>Nombres(s)</th>
+                <th>Asistencia</th>
                 <th>Institucion</th>
                 <th>Nombre CA</th>
                 <th>Clave CA</th>
@@ -68,6 +69,11 @@ $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 $id=0;
                 while ($row = $result->fetch_assoc()) {
+                    if($row["confirmar_asistencia"]==1){
+                        $asistencia='Si';
+                    }else{
+                        $asistencia='No';
+                    }
                     $id=$id+1;
                     switch($row["mesa"]){
                         case '1':
@@ -103,6 +109,7 @@ $result = $conn->query($sql);
                     echo "<tr>
                         <td>" . $id. "</td>
                         <td>" . $row["autores"] . "</td>
+                        <td>" . $asistencia . "</td>
                         <td>" . $row["institucion"] . "</td>
                         <td>" . $row["ca_nombre"] . "</td>
                         <td>" . $row["ca_clave"] . "</td>

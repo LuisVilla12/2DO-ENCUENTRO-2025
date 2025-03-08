@@ -208,7 +208,8 @@
 
   <a href="convocatoria.pdf" class="floating-button" download>Descarga la convocatoria</a>
 </body>
-<script>
+<html>
+  <script>
   document.getElementById("cursos").addEventListener("click", function() {
       Swal.fire({
           icon: 'warning',
@@ -246,5 +247,5 @@
             if (currentIndex >= images.length) currentIndex = 0;
             document.getElementById("modalImage").src = images[currentIndex];
         }
-</script>
-</html>
+  </script>
+  </html>

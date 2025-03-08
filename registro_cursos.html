@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2o. Encuentro de CA's</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
         body {
             background-color: #f3f4f6;
@@ -115,7 +117,7 @@
    </head>
 <body>
     <div class="container">
-        <img src="Encabezado.jpeg" class="" alt="encabezado">
+        <img src="Encabezado_Nuevo.jpg" class="" alt="encabezado">
         <h1>Formulario de Registro - 2o. Encuentro de CA's</h1>
         <p>Registro a los cursos en línea </p>
         <form action="guardar_cursos.php" id="myForm" method="POST" enctype="multipart/form-data">
@@ -173,17 +175,27 @@
                 <label class="block mt-2">&emsp;2. Curso-Taller: Uso ético de la IA en la educación 20, 24, 25 y 26 de Marzo 17:00 a 20:00 horas</label>
                 <label class="block mt-2">&emsp;Indispensable tener conocimientos básicos de computación, tener cuenta de google y la instalación en su PC de software Zotero: <a href="https://www.zotero.org/download/" target="_blank">Instalación de Zotero</a></label>
                 <label for="" class="block mt-4">Elige el curso: </label>
-                <label class="semi-bold mt-2 block"><input type="checkbox" name="cursos[]" value="Huella">Monitoreo y calidad del agua</label>
+                <label class="semi-bold mt-2 block"><input type="checkbox" name="cursos[]" value="Huella" disabled>Monitoreo y calidad del agua</label>
                 <label class="semi-bold mt-2 block"><input type="checkbox" name="cursos[]" value="IA" disabled>Uso ético de la IA en la educación</label>
             </div>
             <!-- Contenedor donde se mostrarán los enlaces -->
             <section id="linkContainer"></section>
-            <button type="submit">Enviar</button>
+            <button type="submit" id="btn_enviar">Enviar</button>
         </form>
     </div>
 </body>
 <script>
+      document.getElementById("btn_enviar").addEventListener("click", function() {
+      Swal.fire({
+          icon: 'warning',
+          title: '¡Límite alcanzado!',
+          text: 'Este curso ha llegado a su límite de registro.',
+          confirmButtonText: 'Cerrar',
+          confirmButtonColor: '#d33'
+      });
+  });
     document.addEventListener("DOMContentLoaded", function () {
+
     const perteneceSi = document.getElementById("si");
     const perteneceNo = document.getElementById("no");
     const camposCuerpoAcademico = document.getElementById("campos_cuerpo_academico");
