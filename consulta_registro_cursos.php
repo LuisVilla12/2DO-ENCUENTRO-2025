@@ -9,7 +9,7 @@ $port = 3306;  // Puerto personalizado (en tu caso, es el 330)
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
 // Consulta para obtener los datos
-$sql = "SELECT * FROM registro_pdf";
+$sql = "SELECT * FROM registro_cursos";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -22,14 +22,31 @@ $result = $conn->query($sql);
         body { font-family: Arial, sans-serif; margin: 20px; }
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-        th { background-color: #4CAF50; color: white; }
+        th { background-color: #800020; color: white; }
         a { text-decoration: none; color: #007bff; }
         a:hover { text-decoration: underline; }
+        .btn {
+            display: inline-block;
+            padding: 10px;
+            background: #800020;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .flex{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
-
-    <h2>Lista de personal registrado a cursos</h2>
+    <div class="flex">
+        <h2>Lista de personal registrado a cursos</h2>
+        <a href="administracion.php" class="btn">Menu principal</a>
+    </div>
 
     <table>
         <thead>
@@ -43,22 +60,39 @@ $result = $conn->query($sql);
                 <th>Clave CA</th>
                 <th>curso</th>
                 <th>Consolidación</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             <?php
             if ($result->num_rows > 0) {
+                $id=0;
                 while ($row = $result->fetch_assoc()) {
+                    $id=$id+1;
+                    if($row["pertenece_cuerpo"]==1){
+                        $perteneceACuerpo='Si';
+                        $grado=$row["grado_consolidacion"];
+                    }else{
+                        $perteneceACuerpo='No';
+                        $grado='Ninguno';
+                    }
                     echo "<tr>
-                        <td>" . $row["id"] . "</td>
+                        <td>" . $id . "</td>
                         <td>" . $row["nombre"] . "</td>
                         <td>" . $row["institucion"] . "</td>
                         <td>" . $row["correo"] . "</td>
-                        <td>" . $row["pertenece_cuerpo"] . "</td>
+                        <td>" . $perteneceACuerpo . "</td>
                         <td>" . $row["ca_nombre"] . "</td>
                         <td>" . $row["ca_clave"] . "</td>
                         <td>" . $row["curso"] . "</td>
-                        <td>" . $row["grado_consolidacion"] . "</td>
+                        <td>" . $grado. "</td>
+                        <td> <a href='editar_registro_cursos.php?id=" . $row["id"] . "'>Editar</a>
+                          <a href='delete_registro_cursos.php?id=" . $row['id'] . "' 
+               onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\");'
+               style='color: red; text-decoration: none;'>
+                    Eliminar
+            </a>
+                        </td>
                     </tr>";
                 }
             } else {

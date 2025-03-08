@@ -9,7 +9,7 @@ $port = 3306;  // Puerto personalizado (en tu caso, es el 330)
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
 // Consulta para obtener los datos
-$sql = "SELECT * FROM registro_academias";
+$sql = "SELECT * FROM registro_asistencias";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -44,20 +44,22 @@ $result = $conn->query($sql);
 </head>
 <body>
     <div class="flex">
-        <h2>Lista de academias</h2>
-        
+        <h2>Lista de asistencia al evento</h2>
         <a href="administracion.php" class="btn">Menu principal</a>
     </div>
+
     <table>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Autores</th>
+                <th>N°</th>
+                <th>Nombres(s)</th>
                 <th>Institucion</th>
                 <th>Nombre CA</th>
                 <th>Clave CA</th>
+                <th>Grado CA</th>
+                <th>Mesa tematica</th>
                 <th>Modalidad</th>
-                <th>Consolidación</th>
+                <th>Modo de información</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -66,23 +68,58 @@ $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 $id=0;
                 while ($row = $result->fetch_assoc()) {
-                    $id=$id+1;  
+                    $id=$id+1;
+                    switch($row["mesa"]){
+                        case '1':
+                            $tematica='Tecnología y Manejo Integral de los recursos hídricos';
+                            break;
+                        case '2':
+                            $tematica='Medio Ambiente, Biotecnología y Sustentabilidad';
+                            break;
+                        case '3':
+                            $tematica='Sistema de Gestión Económico Administrativo y Sociedad';
+                            break;
+                        case '4':
+                            $tematica='Tecnología de la información y comunicación.';
+                            break;
+                        case '5':
+                            $tematica='Nutrición y bienestar';
+                            break;
+                    }
+                    switch($row["modo_informacion"]){
+                        case '1':
+                            $modo_informacion='Sitio Web';
+                            break;
+                        case '2':
+                            $modo_informacion='Conocido';
+                            break;
+                        case '3':
+                            $modo_informacion='Invitación';
+                            break;
+                        case '4':
+                            $modo_informacion='Redes sociales';
+                            break;
+                    }
                     echo "<tr>
-                        <td>" . $id . "</td>
+                        <td>" . $id. "</td>
                         <td>" . $row["autores"] . "</td>
                         <td>" . $row["institucion"] . "</td>
                         <td>" . $row["ca_nombre"] . "</td>
                         <td>" . $row["ca_clave"] . "</td>
-                        <td>" . $row["modalidad"] . "</td>
                         <td>" . $row["grado_consolidacion"] . "</td>
-                        <td> <a href='editar_registro_academias.php?id=" . $row["id"] . "'>Editar</a>
-                        <a href='delete_registro_academias.php?id=" . $row['id'] . "' 
+                        <td>" . $tematica . "</td>
+                        <td>" . $row["modalidad"] . "</td>
+                        <td>" . $modo_informacion. "</td>
+                        <td> <a href='editar_registro_asistencias.php?id=" . $row["id"] . "'>Editar</a>
+                        <a href='delete_registro_asistencia.php?id=" . $row['id'] . "' 
                onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\");'
                style='color: red; text-decoration: none;'>
                     Eliminar
-            </a></td>
+            </a>
+                        
                     </tr>";
                 }
+                
             } else {
                 echo "<tr><td colspan='4'>No hay archivos disponibles.</td></tr>";
             }
