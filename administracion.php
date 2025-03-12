@@ -108,6 +108,14 @@
             <p>Gestione las personas registradas al curso.</p>
             <a href="consulta_registro_cursos.php" class="btn">Acceder</a>
         </div>
+        <!-- Cuatro -->
+        <div class="option" onclick="toggleSection('archivos')">
+            <div><i class="fa-solid fa-file icon"></i> Gestión de archivos</div>
+        </div>
+        <div id="section-archivos" class="content">
+            <p>Gestione los archivos a someter.</p>
+            <a href="consulta_registro_archivos.php" class="btn">Acceder</a>
+        </div>
     </div>
 
     <script>
