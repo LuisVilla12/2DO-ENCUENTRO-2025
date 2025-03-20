@@ -1,10 +1,10 @@
 <?php
 // Configuración de la conexión a la base de datos
 $servername = "localhost";  
-$username = "luisvilla";
+$username = "root";
 $password = "lkqaz923";
 $dbname = "encuentroca";
-$port = 3306;
+$port = 3307;
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
@@ -83,6 +83,7 @@ $modalidades_result = $conn->query($modalidades_sql);
                 <th>Institucion</th>
                 <th>Modalidad</th>
                 <th>Documentos</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -98,6 +99,8 @@ $modalidades_result = $conn->query($modalidades_sql);
                         <td>" . $row["institucion"] . "</td>
                         <td>" . $row["modalidad"] . "</td>
                         <td> <a href='uploads/$archivo' target='_blank'>Descargar</a> </td>
+                        <td> <a href='editar_registro_pdf.php?id=" . $row["id"] . "'>Editar</a>
+                        <a href='delete_registro_pdf.php?id=" . $row['id'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\");' style='color: red; text-decoration: none;'> Eliminar </a>
                     </tr>";
                 }
             } else {
