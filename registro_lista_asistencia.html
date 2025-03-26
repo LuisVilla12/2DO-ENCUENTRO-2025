@@ -1,12 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2o. Encuentro de CA's</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Confirmación asistencia</title>
     <style>
         body {
             background-color: #f3f4f6;
@@ -14,61 +11,55 @@
             margin: 0;
             padding: 0;
         }
-
         .container {
             max-width: 600px;
             margin: 50px auto;
             background: #ffffff;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            padding: 20px 40px;
+            padding: 40px 30px;
         }
-
         h1 {
             font-size: 1.5rem;
             text-align: center;
             margin-bottom: 10px;
             color: #333333;
         }
-
         p {
             text-align: center;
             margin-bottom: 20px;
             font-size: 0.9rem;
             color: #555555;
         }
-
         form {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-
         label, option {
+            line-height: 1.5;
             font-size: 0.9rem;
             font-weight: bold;
             color: #333333;
         }
-
         input[type="text"],
-        input[type="file"] {
+        input[type="file"], 
+        input[type="email"],
+        input[type="number"]{
             width: 100%;
             padding: 8px;
             border: 1px solid #cccccc;
             border-radius: 4px;
             font-size: 0.9rem;
         }
-
         input[type="radio"] {
             margin-right: 8px;
         }
-
         .radio-group {
             display: flex;
             gap: 15px;
             align-items: center;
         }
-
         button {
             padding: 10px;
             background-color: rgb(5,26,57);
@@ -96,60 +87,63 @@
             object-fit: cover;
             height: 80px;
         }
-        .mt-2{
+        .inline-block{
+            display: inline-block;
+            width: 100%;
+        }
+        .mt-4{
             margin-top: .5rem;
+        }
+        .object-fit{
+            width: full;
+            height: auto;
+            object-fit: cover;
         }
     </style>
     </head>
-    
 <body>
     <div class="container">
-        <img src="Encabezado.jpeg" class="" alt="encabezado">
-        <h1>Formulario de Registro - 2o. Encuentro de CA's</h1>
+        <img src="Encabezado_Nuevo.jpg" class="object-fit" alt="encabezado">
+        <h1>Formulario de registro - 2o. Encuentro de CA's</h1>
+        <p>Únicamente para asistentes al evento del 2o. Encuentro de CA's a celebrarse los días 27 y 28 de marzo en el Instituto Tecnológico de Boca del Río</p>
 
-        <form action="guardar_pdf.php" id="myForm" class="formulario" method="POST" enctype="multipart/form-data" >
-
+        <form action="guardar_asistencia.php" id="myForm" method="POST" enctype="multipart/form-data">
             <div>
-                <label>Indica los nombres de los autores *</label>
-                <input type="text" name="autores" id="autores" required placeholder="Villa-Juárez, Jazmin; Alemán-Gutiérrez, María Rebeca...">
+                <label>Nombre(s):*</label>
+                <input type="text" name="name" id="name" required placeholder="Ingrese el nombre(s)">
             </div>
-
+            <div>
+                <label>Apellido paterno:*</label>
+                <input type="text" name="lastname_p" id="lastname_p" required placeholder="Ingrese el apellido paterno">
+            </div>
+            <div>
+                <label>Apellido materno:*</label>
+                <input type="text" name="lastname_m" id="lastname_m" required placeholder="Ingrese el apellido materno">
+            </div>
+            <div>
+                <label>Correo institucional:*</label>
+                <input type="email" name="email" id="email" required placeholder="Ingrese el correo institucional ">
+            </div>
             <div>
                 <label>Institución de procedencia *</label>
-                <input type="text" name="institucion" id="institucion" required placeholder="Nombre de la institución">
+                <input type="text" name="institucion" id="institucion" required placeholder="ngrese el nombre de la institución de procedencia">
             </div>
-
             <div>
-                <label>Modalidad de participación *</label>
-                <div class="radio-group" >
-                    <label><input type="radio" name="modalidad" id="cartel" checked value="Cartel">Cartel</label>
-                    <label><input type="radio" name="modalidad" id="prototipo" value="Prototipo">Prototipo</label>
-                    <label><input type="radio" name="modalidad" id="capitulo" value="⁠Capítulo">⁠Capítulo de libro</label>
-                </div>
+                <label>Número teléfonico:*</label>
+                <input type="number" name="telefono" id="telefono" required placeholder="Ingrese el número teléfonico">
             </div>
-
-            
             <div>
-                <label>Sube tu cartel o ficha técnica o capitulo  *</label>
-                <input class="mt-2" type="file" name="file" id="file" accept=".pdf, .docx, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
-
+                <label>Nombre del cuerpo académico*</label>
+                <input type="text" name="ca_nombre" id="ca_nombre" required placeholder="Ingrese el nombre del cuerpo académico">
             </div>
-            <button type="submit" class="btn_enviar">Enviar</button>
+            <div>
+                <label>Clave del cuerpo académico *</label>
+                <input type="text" name="ca_clave" id="ca_clave" required placeholder="Ingrese la clave del cuerpo académico">
+            </div>
+            <button type="submit">Enviar</button>
         </form>
+
     </div>
 </body>
+
 </html>
-<script>
-const formulario = document.querySelector(".formulario");  // Selecciona el formulario
-const btn_enviar = document.querySelector(".btn_enviar");
-formulario.addEventListener('submit', (e) => {  // Evento al formulario, no al botón
-    e.preventDefault();
-    Swal.fire({
-          icon: 'warning',
-          title: '¡Límite alcanzado!',
-          text: 'Este curso ha llegado a su límite de registro.',
-          confirmButtonText: 'Cerrar',
-          confirmButtonColor: '#d33'
-      });
-});
-</script>

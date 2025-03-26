@@ -180,7 +180,7 @@
               <a href="#" class="header__enlaces bg open-modal">Hotel Sede</a>
               <a href="registro_asistencia.html" class="header__enlaces bg">Registrate  al evento</a>
               <a href="registro_academias.html" class="header__enlaces bg">Registrate a las actividades</a>
-              <a href="registro_formatos.html" class="header__enlaces bg"> <img src="icon_1.png" class="mr-2" style="width: 30px;height: 30px; object-fit: contain;" alt="log">Someter</a>
+              <a href="#" id="pdf" class="header__enlaces bg"> <img src="icon_1.png" class="mr-2" style="width: 30px;height: 30px; object-fit: contain;" alt="log">Someter</a>
               <a href="#" id="cursos" class="header__enlaces bg">Cursos</a>
             </nav>
         </div>
@@ -219,7 +219,16 @@
           confirmButtonColor: '#d33'
       });
   });
-  const images = [
+  document.getElementById("pdf").addEventListener("click", function() {
+      Swal.fire({
+          icon: 'warning',
+          title: '¡Lo sentimos!',
+          text: 'Ha concluido la fecha de recepción de trabajos a someter',
+          confirmButtonText: 'Cerrar',
+          confirmButtonColor: '#d33'
+      });
+  });
+    const images = [
             "hotel1.jpg",
             "hotel2.jpg",
             "hotel3.jpg"
