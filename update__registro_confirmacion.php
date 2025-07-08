@@ -1,10 +1,10 @@
 <?php
 // Configuración de la conexión a la base de datos
 $servername = "localhost";  // O la IP del servidor si no es localhost
-$username = "luisvilla";     // Nombre de usuario de la base de datos
+$username = "root";     // Nombre de usuario de la base de datos
 $password = "lkqaz923";   // Contraseña de la base de datos
 $dbname = "encuentroca";   // Nombre de la base de datos
-$port = 3306;  // Puerto personalizado (en tu caso, es el 330)
+$port = 3307;  // Puerto personalizado (en tu caso, es el 330)
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
@@ -26,6 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $correo = $_POST['email'];
     $ca_clave = $_POST['ca_clave'];
     $ca_nombre = $_POST['ca_nombre'];
+    $ca_nombre = $_POST['ca_nombre'];
+    $confirmar_datos = $_POST['confirmar_datos'];
+
        // Actualizar los datos en la base de datos
     $sql = "UPDATE registro_confirmacion SET 
     name_= '$name',
@@ -36,8 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     institucion='$institucion',
     email='$correo',
     ca_clave='$ca_clave',
-    ca_nombre='$ca_nombre'
-    WHERE id = $id";
+    ca_nombre='$ca_nombre',
+    confirmar_datos=$confirmar_datos
+WHERE id = $id";
 
 if ($conn->query($sql) === TRUE) {
     header("Location: consulta_registro_confirmacion.php");

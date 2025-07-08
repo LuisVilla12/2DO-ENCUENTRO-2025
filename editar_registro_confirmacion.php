@@ -1,10 +1,10 @@
 <?php
 // Configuración de base de datos
 $servername = "localhost";
-$username = "luisvilla";  // Cambiar si es necesario
+$username = "root";  // Cambiar si es necesario
 $password = "lkqaz923";
 $dbname = "encuentroca";
-$port = 3306;
+$port = 3307;
 
 $conn = new mysqli($servername, $username, $password, $dbname,$port);
 
@@ -156,7 +156,7 @@ if (isset($_GET['id'])) {
             </div>
             <div>
                 <label>Institución de procedencia *</label>
-                <input type="text" name="institucion" id="institucion" required placeholder="ngrese el nombre de la institución de procedencia" value="<?php echo $row['institucion']; ?>">
+                <input type="text" name="institucion" id="institucion" required placeholder="Ingrese el nombre de la institución de procedencia" value="<?php echo $row['institucion']; ?>">
             </div>
             <div>
                 <label>Número teléfonico:*</label>
@@ -171,6 +171,13 @@ if (isset($_GET['id'])) {
             <div>
                 <label>Clave del cuerpo académico *</label>
                 <input type="text" name="ca_clave" id="ca_clave" required placeholder="Ingrese la clave del cuerpo académico" value="<?php echo $row['ca_clave']; ?>">
+            </div>
+            <div>
+                <label>¿Datos validados?*</label>
+                <div class="radio-group" >
+                    <label><input type="radio" name="confirmar_datos" id="si"  <?= ($row['confirmar_datos'] == '1') ? 'checked' : '' ?>  value="1">Si</label>
+                    <label><input type="radio" name="confirmar_datos" id="no"  <?= ($row['confirmar_datos'] == '0') ? 'checked' : '' ?>  value="0">No</label>
+                </div>
             </div>
             <button type="submit">Enviar</button>
         </form>

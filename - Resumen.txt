@@ -1,0 +1,47 @@
+- Resumen
+- Introducción 
+- Objetivos
+- Cadenas de búsqueda en 6 navegadores o más 
+- Limitadores (No recuerdo bien la palabra)
+- 30 artículos
+- Excel con dato importante o a usar
+
+     ,
+      ,
+      ,
+      ,
+      modalidad
+
+encuentro.ca
+Xj02luPUxe
+
+Borrac directorio
+rm -rf nombre_del_directorio
+mv * /var/www/HTML
+
+Instalar PHP
+sudo apt install php libapache2-mod-php
+Reiniciar servidor apache
+sudo systemctl restart apache2
+crear archivo de configuracion
+sudo nano /var/www/html/info.php
+<?php
+phpinfo();
+?>
+http://localhost/info.php
+
+instalar mysql
+sudo apt install php8.1-mysqli
+habilitarlo
+sudo phpenmod mysqli
+reiniciar
+sudo systemctl restart apache2
+
+ver log de apache
+sudo tail -f /var/log/apache2/error.log
+
+
+
+
+https://encuentro-ca.itsx.edu.mx/registro_formatos.html
+sudo a2enmod php8.1
