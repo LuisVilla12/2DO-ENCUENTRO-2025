@@ -143,10 +143,8 @@ $result = $conn->query($sql);
     <table id="dataTable">
         <thead>
             <tr>
-                <th>N</th>
+                <th>N°</th>
                 <th>Nombre completo</th>
-                <th>Institución</th>
-                <th>Clave CA</th>
                 <th>Modalidad</th>
                 <th>Descargar ahora</th>
             </tr>
@@ -157,13 +155,11 @@ $result = $conn->query($sql);
             $id = 0;
             while ($row = $result->fetch_assoc()) {
                 $id++;
-                $archivo = $row["namepdf"];
+                $archivo = $row["path_constancia"];
                 echo "<tr>
                     <td>" . $id . "</td>
-                    <td>" . $row["name_"] . " " . $row["lastname_p"] . " " . $row["lastname_m"] . "</td>
-                    <td>" . $row["institucion"] . "</td>
-                    <td>" . $row["ca_clave"] . "</td>
-                    <td>" . $row["tipo"] . "</td>
+                    <td>" . $row["name_constancia"] . "</td>
+                    <td>" . $row["tipo_constancia"] . "</td>
                     <td> 
                         <a href='constancias/$archivo' target='_blank' class='btn-descargar'>
                             <img src='download-icon.png' alt='Descargar'> Descargar
